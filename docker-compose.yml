@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: 'demo/laravel'
+    container_name: demo-laravel-app
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - laravel-demo
+    depends_on:
+      -   mysql
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo
+      MYSQL_USER: mysqluser
+      MYSQL_PASSWORD: password
+    ports:
+      - "9006:3306"
+    volumes:
+      - ./mysqldatabase/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - laravel-demo
+
+networks:
+  laravel-demo:
+    driver: bridge
