@@ -11,3 +11,13 @@ From the document provided to build the demo, I found that loan repayment is Zer
 
 I have assumed settlement of entire loan will be on last installment.
 Like total loan amount $10000 for 3 weakly emi is $3333.33, $3333.33, $3333.34 can be paid in emi as stated or in $4000,$3500,$2500 way.
+
+## Super Admin Credential 
+{
+"email":"superadmin@demo.com",
+"password":"123456"
+}
+
+## Customer Credentials
+Find customer email from api "http://localhost:8000/api/user/list"
+and password = password

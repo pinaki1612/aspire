@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegistrationRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -73,7 +74,7 @@ class UserController extends Controller
         ],Response::HTTP_OK);
     }
 
-    public function list(\Illuminate\Http\Request $request)
+    public function list(Request $request)
     {
         $search = 1;
         if(!empty($request["search"])){
